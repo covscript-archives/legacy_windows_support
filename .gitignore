@@ -1,0 +1,9 @@
+.DS_Store
+*.dmg
+.vscode/
+build/
+build-cache/
+cspkg-repo/
+temp.wxs
+*.wixobj
+*.msi

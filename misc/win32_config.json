@@ -1,0 +1,22 @@
+{
+    "git_repo": "https://github.com/",
+    "repos": [
+        "covscript/csdbc",
+        "covscript/stdutils",
+        "covscript/covscript-database",
+        "covscript/covscript-darwin",
+        "covscript/covscript-sqlite",
+        "covscript/covscript-network",
+        "covscript/covscript-imgui",
+        "covscript/covscript-zip"
+    ],
+    "build": [
+        "stdutils",
+        "covscript-database",
+        "covscript-darwin",
+        "covscript-sqlite",
+        "covscript-network",
+        "covscript-imgui",
+        "covscript-zip"
+    ]
+}
