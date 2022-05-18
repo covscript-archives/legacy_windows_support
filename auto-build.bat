@@ -30,6 +30,8 @@ cd ..
 .\build\bin\cs -i .\build\imports .\misc\win32_build.csc .\misc\win32_config.json
 .\build\bin\cs -i .\build\imports .\misc\cspkg_build.csc .\misc\cspkg_config.json
 
+move /Y .\build\imports\imgui_gl2.cse .\build\imports\imgui.cse
+
 goto:eof
 :call_bat
 cd %1%
