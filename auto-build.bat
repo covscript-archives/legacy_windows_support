@@ -9,6 +9,18 @@ call:git_fetch covscript-regex
 call:git_fetch covscript-codec
 call:git_fetch covscript-process
 
+cd covscript
+if "%1%" EQU "release" (
+    echo Building for release...
+    set CSPKG_CONFIG=".\misc\cspkg_config.json"
+    git checkout 3.4.1
+) else (
+    echo Building for nightly...
+    set CSPKG_CONFIG=".\misc\cspkg_nightly_config.json"
+    git checkout master
+)
+cd ..
+
 call:call_bat covscript
 set CS_DEV_PATH=%cd%\covscript\csdev
 call:call_bat covscript-regex
@@ -28,9 +40,12 @@ xcopy /E /Y covscript-process\build ..\build\
 
 cd ..
 .\build\bin\cs -i .\build\imports .\misc\win32_build.csc .\misc\win32_config.json
-.\build\bin\cs -i .\build\imports .\misc\cspkg_build.csc .\misc\cspkg_config.json
+.\build\bin\cs -i .\build\imports .\misc\cspkg_build.csc %CSPKG_CONFIG%
 
-move /Y .\build\imports\imgui_gl2.cse .\build\imports\imgui.cse
+move /Y .\build\imports\imgui_legacy.cse .\build\imports\imgui.cse
+cd build-cache
+xcopy /E /Y ecs\build\ ..\build\
+cd ..
 
 goto:eof
 :call_bat
